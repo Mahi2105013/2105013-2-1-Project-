@@ -15,6 +15,12 @@ const InputMedicineTaken = () => {
                 return;
             }
 
+            if(parseInt(MEDICINE_ID) > 48)
+            {
+                alert("NO MEDICINE WITH PROVIDED ID EXISTS");
+                return;
+            }
+
             const body = { ADMISSION_ID, MEDICINE_ID, QUANTITY } // this may contain many other stuff
             const response = await fetch("http://localhost:5000/medicinestaken",
             {

@@ -55,18 +55,6 @@ app.use(helperAppEdit);
 const testreports = require('./testreports');
 app.use(testreports);
 
-// get all todos
-app.get("/todos", async(req, res) => {
-    try {
-    const query = "SELECT * FROM TODO";
-    const params = [];
-    const result = await db_query(query,params);
-    res.status(200).json(result);
-        //res.json("Todo was updated!");
-    } catch (error) {
-        console.log("ERROR! NO!");
-    }
-});
 
 app.get("/loggingin", async(req, res) => {
     try {
@@ -79,87 +67,6 @@ app.get("/loggingin", async(req, res) => {
         console.log("ERROR! NO!");
     }
 });
-
-// get a todo
-app.get("/todos/:id", async(req, res) => {
-    try {
-    const {id} = req.params;
-    const query = "SELECT * FROM TODO where TODO_ID = $1";
-    const params = [id];
-    
-    const result = await db_query(query,params);
-    res.status(200).json(result);
-        //res.json("Todo was updated!");
-    } catch (error) {
-        console.log("ERROR! NO!");
-    }
-});
-
-// insert - hoynai eta
-app.post("/todos", async(req, res) => {
-    try {
-        //const {id} = req.params;
-        const {DESCRIPTIONN} = req.body;
-        const query = "INSERT INTO TODO (DESCRIPTIONN) VALUES (:1)"; // RETURNING *";
-        const params = [DESCRIPTIONN];
-
-        //await db_query(query, params);
-        const result = await db_query(query, params);
-        //res.json({message : "done!"});
-        res.status(200).json(result);
-        console.log("Done!");
-
-        /*
-            const result = await db_query(query,params);
-            res.status(200).json(result);
-        */
-        //res.json("Todo was updated!");
-    } catch (error) {
-        console.log("ERROR! NO!");
-        res.status(500).json({ error: 'Internal Server Error' });
-    }
-});
-
-// DELETE- easy
-/*app.delete("/todos/:id", async (req,res) => {
-    try {
-        const {id} = req.params;
-        //const query = "delete FROM TODO WHERE TODO_ID = $1";
-        //const query = "delete FROM TODO WHERE TODO_ID = (:id)";
-        //const params = [id];
-
-        const query = "DELETE FROM TODO WHERE TODO_ID = :1";
-        const params = [id];
-
-
-        const delToDo = await db_query(query, params);
-        res.json(delToDo);
-
-    } catch (error) {
-        console.log(error.message);
-    }
-});*/
-app.delete("/todos/:id", async (req, res) => {
-    try {
-        const { id } = req.params;
-
-        if (isNaN(id)) {
-            return res.status(400).json({ error: 'Invalid ID provided' });
-        }
-
-        const query = "DELETE FROM TODO WHERE TODO_ID = :id";
-        const params = { id: parseInt(id) };
-
-        const delToDo = await db_query(query, params);
-        res.json(delToDo);
-    } catch (error) {
-        console.log(error.message);
-        res.status(500).json({ error: 'Internal Server Error' });
-    }
-});
-
-
-
 
 
 // NOW WITH THE HOSPITAL DB PORTION
@@ -646,6 +553,41 @@ app.get("/billingall", async(req, res) => {
     res.status(200).json(result);
     } catch (error) {
         console.log(error);
+        console.log("ERROR! NO!");
+    }
+});
+
+
+// EXECUTING PROCEDURES
+// calc nightts stayed
+app.get("/calcnightsstayed", async(req, res) => {
+    try {
+    const { id } = req.query;
+    const query = `
+    BEGIN
+    CALCULATE_NIGHTS_STAYED;
+    END;
+    `;
+    const params = {};
+    const result = await db_query(query,params);
+    res.status(200).json(result);
+    } catch (error) {
+        console.log("ERROR! NO!");
+    }
+});
+
+// CALC CALCULATE_CAPACITY_OF_ROOM
+app.get("/calcroomcapacity", async(req, res) => {
+    try {
+    const query = `
+    BEGIN
+    CALCULATE_CAPACITY_OF_ROOM;
+    END;
+    `;
+    const params = {};
+    const result = await db_query(query,params);
+    res.status(200).json(result);
+    } catch (error) {
         console.log("ERROR! NO!");
     }
 });

@@ -29,10 +29,10 @@ const EditMedicine = ({ todo }) => {
         return;
       }
 
-      if (!/^\d+$/.test(PRICE.trim())) {
-        alert("PRICE MUST BE NUMERIC!");
-        return; // Prevent further execution of the form submission
-      }
+      // if (!/^\d+$/.test(PRICE.trim())) {
+      //   alert("PRICE MUST BE NUMERIC!");
+      //   return; // Prevent further execution of the form submission
+      // }
 
       const body = { TRADE_NAME, GENERIC_NAME, STRENGTH, DESCRIPTION, MANUFACTURER, PRICE };
       const response = await fetch(
