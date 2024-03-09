@@ -333,8 +333,6 @@ app.get("/doctors/:id", async(req, res) => {
     }
 });
 
-// UPDATING (EDITING) - WILL DO LATER
-
 // INSERTING DOCTORS
 app.post("/doctors", async(req, res) => {
     try {

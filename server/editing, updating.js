@@ -32,27 +32,6 @@ app.use(express.json());
 app.use(morgan("dev"));
 app.use(router);
 
-
-// update todo
-app.put("/todos/:id", async(req, res) => {
-    try {
-        const {id} = req.params;
-        const {DESCRIPTIONN} = req.body;
-        console.log(id);
-        console.log(DESCRIPTIONN);
-
-        //const query = "UPDATE TODO SET DESCRIPTIONN = $1 WHERE TODO_ID = $2";
-        const query = "UPDATE TODO SET DESCRIPTIONN = :DESCRIPTIONN WHERE TODO_ID = :id";
-        const params = [DESCRIPTIONN, id];
-
-        const updateToDo = await db_query(query, params);
-        res.json(updateToDo);
-        //res.json("Todo was updated!");
-    } catch (error) {
-        console.log("ERROR! NO!");
-    }
-});
-
 // update medicine
 app.put("/medicines/:id", async(req, res) => {
     try {

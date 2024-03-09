@@ -32,21 +32,7 @@ app.use(express.json());
 app.use(morgan("dev"));
 app.use(router);
 
-// dummy tutorial search code
-app.get("/users", async (req, res) => {
-    try {
-      const { name } = req.query;
-      const users = await pool.query(
-        "SELECT * FROM users WHERE first_name || ' ' || last_name ILIKE $1",
-        [`%${name}%`]
-      );
-  
-      res.json(users.rows);
-    } catch (err) {
-      console.error(err.message);
-    }
-});
-
+// medicines search - advanced search
 app.get("/medicinessearch", async (req, res) => {
     try {
         console.log(req.query);
