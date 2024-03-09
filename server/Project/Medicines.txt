@@ -1,0 +1,68 @@
+INSERT INTO MEDICINE (TRADE_NAME, GENERIC_NAME, STRENGTH, DESCRIPTION, MANUFACTURER, PRICE) 
+VALUES ('Mucinex', 'Guaifenesin', '600 mg', 'Expectorant for chest congestion', 'Reckitt Benckiser', 9.99);
+
+INSERT INTO MEDICINE (TRADE_NAME, GENERIC_NAME, STRENGTH, DESCRIPTION, MANUFACTURER, PRICE) 
+VALUES ('Claritin', 'Loratadine', '10 mg', 'Antihistamine for allergies', 'Bayer', 8.99);
+
+INSERT INTO MEDICINE (TRADE_NAME, GENERIC_NAME, STRENGTH, DESCRIPTION, MANUFACTURER, PRICE) 
+VALUES ('Seroquel', 'Quetiapine', '100 mg', 'Atypical antipsychotic', 'AstraZeneca', 11.99);
+
+INSERT INTO MEDICINE (TRADE_NAME, GENERIC_NAME, STRENGTH, DESCRIPTION, MANUFACTURER, PRICE) 
+VALUES ('Ritalin', 'Methylphenidate', '10 mg', 'Stimulant for ADHD', 'Novartis', 10.99);
+
+INSERT INTO MEDICINE (TRADE_NAME, GENERIC_NAME, STRENGTH, DESCRIPTION, MANUFACTURER, PRICE) 
+VALUES ('Adderall', 'Amphetamine', '10 mg', 'Stimulant for ADHD', 'Shire', 12.99);
+
+INSERT INTO MEDICINE (TRADE_NAME, GENERIC_NAME, STRENGTH, DESCRIPTION, MANUFACTURER, PRICE) 
+VALUES ('Abilify', 'Aripiprazole', '10 mg', 'Atypical antipsychotic', 'Bristol Myers Squibb', 13.99);
+
+INSERT INTO MEDICINE (TRADE_NAME, GENERIC_NAME, STRENGTH, DESCRIPTION, MANUFACTURER, PRICE) 
+VALUES ('Propecia', 'Finasteride', '1 mg', 'Treatment for male pattern baldness', 'Merck', 14.99);
+
+INSERT INTO MEDICINE (TRADE_NAME, GENERIC_NAME, STRENGTH, DESCRIPTION, MANUFACTURER, PRICE) 
+VALUES ('Cialis', 'Tadalafil', '10 mg', 'Erectile dysfunction medication', 'Eli Lilly', 15.99);
+
+INSERT INTO MEDICINE (TRADE_NAME, GENERIC_NAME, STRENGTH, DESCRIPTION, MANUFACTURER, PRICE) 
+VALUES ('Crestor', 'Rosuvastatin', '10 mg', 'Cholesterol-lowering medication', 'AstraZeneca', 16.99);
+
+INSERT INTO MEDICINE (TRADE_NAME, GENERIC_NAME, STRENGTH, DESCRIPTION, MANUFACTURER, PRICE) 
+VALUES ('Neurontin', 'Gabapentin', '300 mg', 'Anticonvulsant, neuropathic pain medication', 'Pfizer', 17.99);
+
+INSERT INTO MEDICINE (TRADE_NAME, GENERIC_NAME, STRENGTH, DESCRIPTION, MANUFACTURER, PRICE) 
+VALUES ('Wellbutrin', 'Bupropion', '150 mg', 'Atypical antidepressant', 'GlaxoSmithKline', 18.99);
+
+INSERT INTO MEDICINE (TRADE_NAME, GENERIC_NAME, STRENGTH, DESCRIPTION, MANUFACTURER, PRICE) 
+VALUES ('Symbicort', 'Budesonide/Formoterol', '100/6 mcg', 'Combination inhaler for asthma', 'AstraZeneca', 19.99);
+
+INSERT INTO MEDICINE (TRADE_NAME, GENERIC_NAME, STRENGTH, DESCRIPTION, MANUFACTURER, PRICE) 
+VALUES ('Tramadol', 'Tramadol', '50 mg', 'Opioid pain medication', 'Johnson & Johnson', 20.99);
+
+INSERT INTO MEDICINE (TRADE_NAME, GENERIC_NAME, STRENGTH, DESCRIPTION, MANUFACTURER, PRICE) 
+VALUES ('Zoloft', 'Sertraline', '50 mg', 'Selective serotonin reuptake inhibitor (SSRI)', 'Pfizer', 21.99);
+
+INSERT INTO MEDICINE (TRADE_NAME, GENERIC_NAME, STRENGTH, DESCRIPTION, MANUFACTURER, PRICE) 
+VALUES ('Fosamax', 'Alendronate', '70 mg', 'Bisphosphonate for osteoporosis', 'Merck', 22.99);
+
+INSERT INTO MEDICINE (TRADE_NAME, GENERIC_NAME, STRENGTH, DESCRIPTION, MANUFACTURER, PRICE) 
+VALUES ('Levitra', 'Vardenafil', '20 mg', 'Erectile dysfunction medication', 'Bayer', 23.99);
+
+INSERT INTO MEDICINE (TRADE_NAME, GENERIC_NAME, STRENGTH, DESCRIPTION, MANUFACTURER, PRICE) 
+VALUES ('Paxil', 'Paroxetine', '20 mg', 'Selective serotonin reuptake inhibitor (SSRI)', 'GlaxoSmithKline', 24.99);
+
+INSERT INTO MEDICINE (TRADE_NAME, GENERIC_NAME, STRENGTH, DESCRIPTION, MANUFACTURER, PRICE) 
+VALUES ('Singulair', 'Montelukast', '10 mg', 'Leukotriene receptor antagonist for asthma', 'Merck', 25.99);
+
+INSERT INTO MEDICINE (TRADE_NAME, GENERIC_NAME, STRENGTH, DESCRIPTION, MANUFACTURER, PRICE) 
+VALUES ('Nasonex', 'Mometasone', '50 mcg', 'Topical steroid nasal spray for allergies', 'Merck', 26.99);
+
+INSERT INTO MEDICINE (TRADE_NAME, GENERIC_NAME, STRENGTH, DESCRIPTION, MANUFACTURER, PRICE) 
+VALUES ('Elavil', 'Amitriptyline', '25 mg', 'Tricyclic antidepressant', 'Merck', 27.99);
+
+INSERT INTO MEDICINE (TRADE_NAME, GENERIC_NAME, STRENGTH, DESCRIPTION, MANUFACTURER, PRICE) 
+VALUES ('Prevacid', 'Lansoprazole', '30 mg', 'Proton pump inhibitor for GERD', 'Takeda', 28.99);
+
+INSERT INTO MEDICINE (TRADE_NAME, GENERIC_NAME, STRENGTH, DESCRIPTION, MANUFACTURER, PRICE) 
+VALUES ('Xarelto', 'Rivaroxaban', '20 mg', 'Anticoagulant for stroke prevention', 'Bayer', 29.99);
+
+INSERT INTO MEDICINE (TRADE_NAME, GENERIC_NAME, STRENGTH, DESCRIPTION, MANUFACTURER, PRICE) 
+VALUES ('Percocet', 'Oxycodone/Acetaminophen', '5/325 mg', 'Opioid pain medication', 'Johnson & Johnson', 30.99);

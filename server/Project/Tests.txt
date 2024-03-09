@@ -1,0 +1,40 @@
+INSERT INTO TEST (TYPE, DESCRIPTION, COST)
+VALUES ('Blood Test', 'Evaluates overall health, detects disorders like anemia, infection. Measures blood components like RBCs, WBCs, platelets.', 500);
+
+INSERT INTO TEST (TYPE, DESCRIPTION, COST)
+VALUES ('X-Ray Examination', 'Produces images of body interior using electromagnetic radiation. Diagnoses fractures, pneumonia, tumors.', 1000);
+
+INSERT INTO TEST (TYPE, DESCRIPTION, COST)
+VALUES ('Urine Analysis', 'Examines urine content to diagnose urinary tract infections, kidney disease, diabetes. Evaluates pH, specific gravity, components.', 300);
+
+INSERT INTO TEST (TYPE, DESCRIPTION, COST)
+VALUES ('MRI Scan', 'Uses magnets, radio waves to create detailed body images. Diagnoses tumors, brain injuries, spinal cord disorders.', 1500);
+
+INSERT INTO TEST (TYPE, DESCRIPTION, COST)
+VALUES ('Electrocardiogram (ECG)', 'Measures heart electrical activity to diagnose arrhythmias, heart attacks, heart failure.', 800);
+
+
+INSERT INTO TEST (TYPE, DESCRIPTION, COST)
+VALUES ('Fecal Occult Blood Test (FOBT)', 'Screens for hidden blood in stool. Diagnoses colorectal cancer, GI bleeding, IBD.', 400);
+
+INSERT INTO TEST (TYPE, DESCRIPTION, COST)
+VALUES ('Spirometry Test', 'Measures air amount, speed in lungs. Diagnoses asthma, COPD, interstitial lung disease.', 600);
+
+INSERT INTO TEST (TYPE, DESCRIPTION, COST)
+VALUES ('Thyroid Function Test (TFT)', 'Measures thyroid hormone levels. Diagnoses hypothyroidism, hyperthyroidism, thyroid cancer.', 700);
+
+INSERT INTO TEST (TYPE, DESCRIPTION, COST)
+VALUES ('Skin Allergy Test', 'Identifies allergens causing reactions. Diagnoses allergic rhinitis, eczema, food allergies.', 350);
+
+
+
+INSERT INTO TEST (TYPE, DESCRIPTION, COST)
+VALUES ('Liver Function Test (LFT)', 'Measures liver enzyme, protein levels. Diagnoses hepatitis, cirrhosis, fatty liver disease.', 900);
+
+
+INSERT INTO TEST (TYPE, DESCRIPTION, COST)
+VALUES ('Electroencephalogram (EEG)', 'Measures brain electrical activity. Diagnoses epilepsy, sleep disorders, brain tumors.', 1200);
+
+
+INSERT INTO TEST (TYPE, DESCRIPTION, COST)
+VALUES ('Bone Density Test', 'Measures bone strength, density. Diagnoses osteoporosis, assesses fracture risk.', 1000);
