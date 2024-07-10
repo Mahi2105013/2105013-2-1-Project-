@@ -11,36 +11,6 @@ label {
 }
 
 
-.background-image {
-  /* Set the background image URL */
-  /*background-image: url("C:\Users\tasni\OneDrive\Desktop\todo\images\hospitalpic3.jpg");*/
-  background-image: url("../images/hospitalpic3.jpg");
-
-  /* Set background size to cover the entire container */
-  background-size: cover;
-  /*overflow: hidden; /* Prevent content from overflowing the container */
-
-
-  /* Specify how the background image should be positioned */
-  background-position: center;
-
-  height: 100vh;
-
-  /* Fix the background image while scrolling */
-  background-attachment: fixed;
-
-  /* Set a background color in case the image is not available or takes time to load */
-  background-color: #ffffff;
-  /*position: relative; /* Ensure relative positioning for the overlay */
-
-  /* Optional: Add additional styles for your content */
-  color: #333;
-  padding: 20px;
-  text-align: center;
-  /* ... Add any other styles you want for the content within the background */
-}
-
-
 .overlay {
   position: absolute;
   top: 0;

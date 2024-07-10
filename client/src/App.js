@@ -94,7 +94,7 @@ import TopSellingTestsMonth from "./components/Dashboard/TopSellingTestsMonth";
     // You would still need to create the HTML elements and apply these styles dynamically in your JavaScript code.
 
     return (   
-      <div className="text-center">
+      <div className="text-center" style = {{backgroundImage: `url('/hospitalpic3.jpg')`}}>
         <h1 className="text-center">Welcome to Hospital Management System</h1>
         <p className="text-left">
           At our core, we prioritize the health and well-being of our patients, staff, and community. With cutting-edge technology and a compassionate approach, we strive to provide seamless healthcare management solutions. From patient records to staff coordination, inventory management to streamlined operations, our system empowers healthcare professionals to deliver optimal care. Together, we embark on a journey of innovation and collaboration, ensuring that every aspect of healthcare administration is handled with precision and care. Trust in us as your reliable partner in healthcare management, where every action is driven by our commitment to excellence.
@@ -212,8 +212,8 @@ import TopSellingTestsMonth from "./components/Dashboard/TopSellingTestsMonth";
         </div>
       </nav>
    */}
-          <div>
-            
+          {/* <div> */}
+          <div style = {{backgroundImage: `url('/hospitalpic3.jpg')`}} >
           {isLoggedIn ? <NavigationBar /> : <p></p>}
           {!isLoggedIn ? renderp() : <p></p>}
           {/* Route definitions */}
@@ -277,7 +277,7 @@ import TopSellingTestsMonth from "./components/Dashboard/TopSellingTestsMonth";
     }
 
     return (
-      <div>
+      <div style = {{backgroundImage: `url('/hospitalpic2.jpg')`}} >
       <nav class="navbar navbar-expand navbar-dark bg-dark">
       <div class="container">
       <a href="#" class="navbar-brand"></a>
@@ -463,6 +463,7 @@ const Login6 = ({ setLoginTrue }) => {
 
       const parseRes = await response.json();
       
+      let x = false
       parseRes.forEach(element => {
         console.log(element.USER_EMAIL)
         console.log(email)
@@ -474,6 +475,7 @@ const Login6 = ({ setLoginTrue }) => {
         {
           //setAuth(true);
           //setLoginTrue();
+          x = true
           localStorage.setItem('isLoggedIn', true);
           console.log("yep");
           window.location = "/home"
@@ -481,14 +483,18 @@ const Login6 = ({ setLoginTrue }) => {
           //return;
         }
         
-        else
-        {
-          alert("Incorrect username and password")
-          console.log("nope, doesnt match")
-        }
+        // else
+        // {
+        //   alert("Incorrect username and password")
+        //   console.log("nope, doesnt match")
+        // }
         //else {window.location = "/doctors";}
       });
 
+      if(!x) {
+        alert("Incorrect username and password")
+          console.log("nope, doesnt match")
+      }
         
     } catch (err) {
       console.error(err.message);
@@ -497,6 +503,7 @@ const Login6 = ({ setLoginTrue }) => {
 
   return (
     <Fragment>
+      <div style = {{backgroundColor: 'white'}} >
       <h1 className="mt-5 text-center">Login</h1>
       <form onSubmit={onSubmitForm}>
         <center>
@@ -532,6 +539,7 @@ const Login6 = ({ setLoginTrue }) => {
       <center>
       <Link to="/registeraccount">Don't have an account? Register</Link>
       </center>
+    </div>  
     </Fragment>
   );
 };

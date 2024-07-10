@@ -75,6 +75,7 @@ const InputPatient = () => {
 
     return (
         <Fragment>
+            <div style = {{backgroundImage: `url('/hospitalpic1.jpg')`}} >
             {<h1 className="text-center mt-5">Admit a new patient</h1>}
             <form className="text-center d-flex mt-5" onSubmit={onSubmitForm}>
             <div className="mx-auto align-items-center"> {/* mx-auto will center the div horizontally
@@ -185,6 +186,7 @@ const InputPatient = () => {
             </form>
         {/*</div>
         </div>*/}
+        </div>
         </Fragment>
     )
 }
