@@ -10,6 +10,13 @@ const Billing = () => {
     //const [admid, setadmid] = useState("");
     const [name, setName] = useState(""); // name -> searchMedicine
 
+    const [numberOfRows, setnumberOfRows] = useState(50);
+    const rowsPerLoad = 100;
+
+    const loadMoreRows = () => {
+        setnumberOfRows(numberOfRows + rowsPerLoad);
+    };
+
     useEffect(() => {
         getMedicines();
         Searcher();
@@ -92,7 +99,7 @@ const Billing = () => {
     </thead>
 
     <tbody>
-    {medicines.map(todo => (
+    {medicines.slice(0, numberOfRows).map(todo => (
         <tr key = {todo.ADMISSION_ID}>
             <td>{todo.ADMISSION_ID}</td> 
             <td> {todo.PATIENT_NAME}  </td>
@@ -103,9 +110,20 @@ const Billing = () => {
         
         </tr>
     ))}
-
     </tbody>
     </table>
+
+    <center>
+    {numberOfRows < medicines.length && (
+                        <div style={{ textAlign: 'center' }}>
+                            <button className="btn btn-warning" onClick={loadMoreRows}>
+                                Load More Rows
+                            </button>
+                        </div>
+                        )}
+    </center>
+
+
     <p id="form"> </p>
     </Fragment>
     )

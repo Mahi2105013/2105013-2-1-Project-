@@ -8,6 +8,7 @@ const ListofRooms = () => {
 
     //const [todos, setTodos] = useState([])
     const [doctors, setDoctors] = useState([]);
+    const [email, setEmail] = useState('')
 
     // DELETE FUNCTION
     const deleteDoctor = async (DOCTOR_ID) => {
@@ -30,6 +31,7 @@ const ListofRooms = () => {
 
     const getRooms = async() => {
         try {
+            setEmail(localStorage.getItem('email'))
             const response = await fetch("http://localhost:5000/rooms"); // by default, fetch makes a get request
             // we will get json data back
             const jsonData = await response.json();
@@ -74,11 +76,11 @@ const ListofRooms = () => {
             <td> {todo.NAME}  </td>
             <td> {todo.TYPE}  </td>
             <td > {todo.CAPACITY}  </td>
-            <td style={{width: '8%'}}> <button className="btn btn-warning"> Edit </button></td>
+            {email === 'admin@gmail.com' && <div> <td style={{width: '8%'}}> <button className="btn btn-warning"> Edit </button></td>
             <td style={{width: '8%'}}> 
                 <button className="btn btn-danger" onClick={() => deleteDoctor(todo.ID)}>
                  Delete </button> 
-            </td>
+            </td> </div>}
         </tr>
     ))}
 

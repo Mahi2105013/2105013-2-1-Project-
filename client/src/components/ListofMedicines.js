@@ -15,6 +15,9 @@ const ListofMedicines = () => {
     const [name2, setName2] = useState("");
     const [description, setDescription] = useState("");
     const [manufacturer, SETMANUFACTURER] = useState("");
+
+    const [email, setEmail] = useState("")
+
     const Searcher = async e => {
         e.preventDefault();
         console.log(name);
@@ -54,6 +57,7 @@ const ListofMedicines = () => {
 
     const getMedicines = async() => {
         try {
+            setEmail(localStorage.getItem('email'))
             const response = await fetch("http://localhost:5000/medicines"); // by default, fetch makes a get request
             // we will get json data back
             const jsonData = await response.json();
@@ -75,13 +79,14 @@ const ListofMedicines = () => {
     return (
     <Fragment>
     <center>
-    <a href = '#list'> <button className="btn-primary">View Medicines</button>  </a> <br/>
+    <a href = '#listofmed'> <button className="btn-primary">View Medicines</button>  </a> <br/>
     <p></p>
-    <a href = '#form'> <button className="btn-primary">Add a Medicine</button> </a>
-    </center>
+    {email === 'admin@gmail.com' && <div>    <a href = '#form'> <button className="btn-primary">Add a Medicine</button> </a>
+    </div>}
+    </center> 
     
     
-    <center><h1 class = "mt-5" id="list"> SEARCH FOR A MEDICINE: </h1></center>
+    <center><h1 class = "mt-5" id="list"> SEARCH FOR A MEDICINE: (ADVANCED SEARCH) </h1></center>
     <form onSubmit={Searcher} className="text-center" style={{backgroundColor: 'rgba(40,167,69,0.1)'}}>
         <center>
         <label for="name2"> TRADE NAME: </label>
@@ -133,7 +138,7 @@ const ListofMedicines = () => {
    {rowsFetched === 0 ? "No results matched" : ""}
    </center>
 
-    <center><h1 class = "mt-5" id="list"> LIST OF MEDICINES </h1></center>
+    <center><h1 class = "mt-5" id="listofmed"> LIST OF AVAILABLE MEDICINES </h1></center>
     
     <table class="table table-bordered mt-5 table-dark table-striped table-sm table-responsive">
 
@@ -168,18 +173,20 @@ const ListofMedicines = () => {
             <td> {todo.DESCRIPTION}  </td>
             <td> {todo.MANUFACTURER}  </td>
             <td> {todo.PRICE}  </td>
-            <td> <EditMedicine todo={todo} /> </td>
+            { email === 'admin@gmail.com' && <div>  <td> <EditMedicine todo={todo} /> </td>
             <td> 
                 <button className="btn btn-danger" onClick={() => deleteMedicine(todo.MEDICINE_ID)}>
                  Delete </button> 
-            </td>
+            </td> </div>}
         </tr>
     ))}
 
     </tbody>
     </table>
     <p id="form"> </p>
-    <InputMedicine />
+    {email === 'admin@gmail.com' && <div>
+    < InputMedicine />
+    </div>}
     </Fragment>
     )
 }

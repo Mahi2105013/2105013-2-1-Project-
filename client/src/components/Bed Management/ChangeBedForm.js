@@ -80,13 +80,16 @@ const ChangeBedForm = () => {
                     />
                 </label>
                 <br />
-                
-                [Find unoccupied/available beds-
+                <div style={{fontSize: '24px'}}>
+                <b> [Find unoccupied/available beds-
                 <a href="http://localhost:3000/beds">
-                 here]
+                 here] 
                 </a>
+                </b>
+
                 <br/>
                 <button type="submit">Change Bed</button>
+                </div>
             </form>
         </div>
     );

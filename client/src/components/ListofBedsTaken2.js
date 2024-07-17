@@ -3,6 +3,13 @@ import { Link } from "react-router-dom";
 const ListofBedsTaken2 = () => {
     const [medicines, setMedicines] = useState([]);
 
+    const [numberOfRows, setnumberOfRows] = useState(50);
+    const rowsPerLoad = 100;
+
+    const loadMoreRows = () => {
+        setnumberOfRows(numberOfRows + rowsPerLoad);
+    };
+
     const getMedicines = async() => {
         try {
             const response = await fetch("http://localhost:5000/bedstaken"); // by default, fetch makes a get request
@@ -49,7 +56,7 @@ const ListofBedsTaken2 = () => {
 
     <tbody>
 
-    {medicines.map(todo => (
+    {medicines.slice(0, numberOfRows).map(todo => (
         <tr key = {todo.BED_TAKEN_ID}>
             <td>
                  {todo.BED_TAKEN_ID}
@@ -66,9 +73,20 @@ const ListofBedsTaken2 = () => {
             <td> {todo.NUMBER_OF_NIGHTS_STAYED} </td>
         </tr>
     ))}
-
     </tbody>
     </table>
+
+    <center>
+    {numberOfRows < medicines.length && (
+                        <div style={{ textAlign: 'center' }}>
+                            <button className="btn btn-warning" onClick={loadMoreRows}>
+                                Load More Rows
+                            </button>
+                        </div>
+                        )}
+    </center>
+
+
     </div>
     <p> </p>
     <p> </p>

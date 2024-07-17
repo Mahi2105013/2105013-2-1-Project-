@@ -8,6 +8,7 @@ const ListofDoctors = () => {
 
     //const [todos, setTodos] = useState([])
     const [doctors, setDoctors] = useState([]);
+    const [email, setEmail] = useState("")
 
     // DELETE FUNCTION
     const deleteDoctor = async (DOCTOR_ID) => {
@@ -30,6 +31,8 @@ const ListofDoctors = () => {
 
     const getDoctors = async() => {
         try {
+            setEmail(localStorage.getItem('email'))
+
             const response = await fetch("http://localhost:5000/doctors"); // by default, fetch makes a get request
             // we will get json data back
             const jsonData = await response.json();
@@ -83,13 +86,13 @@ const ListofDoctors = () => {
             <td> {todo.DEPARTMENT_NAME}  </td>
             <td> {todo.SPECIALITY}  </td>
             <td> {todo.CONTACT_NO}  </td>
-            <td> 
-            <button className="btn btn-warning"> Edit </button>
+            {email === 'admin@gmail.com' && <div> <td> 
+                <button className="btn btn-warning"> Edit </button>
             </td>
             <td> 
                 <button className="btn btn-danger" onClick={() => deleteDoctor(todo.DOCTOR_ID)}>
                  Delete </button> 
-            </td>
+            </td> </div>}
         </tr>
     ))}
 

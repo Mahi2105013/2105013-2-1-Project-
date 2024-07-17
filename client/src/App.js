@@ -91,7 +91,6 @@ import TopSellingTestsMonth from "./components/Dashboard/TopSellingTestsMonth";
       },
     };
     
-    // You would still need to create the HTML elements and apply these styles dynamically in your JavaScript code.
 
     return (   
       <div className="text-center" style = {{backgroundImage: `url('/hospitalpic3.jpg')`}}>
@@ -99,11 +98,6 @@ import TopSellingTestsMonth from "./components/Dashboard/TopSellingTestsMonth";
         <p className="text-left">
           At our core, we prioritize the health and well-being of our patients, staff, and community. With cutting-edge technology and a compassionate approach, we strive to provide seamless healthcare management solutions. From patient records to staff coordination, inventory management to streamlined operations, our system empowers healthcare professionals to deliver optimal care. Together, we embark on a journey of innovation and collaboration, ensuring that every aspect of healthcare administration is handled with precision and care. Trust in us as your reliable partner in healthcare management, where every action is driven by our commitment to excellence.
         </p>
-        {/* <a href = '#admissionsmonthly'> COUNT OF ADMISSIONS (MONTHLY) </a> <br/>
-        <a href = '#admissionsyearly'> COUNT OF ADMISSIONS (YEARLY) </a> <br/>
-        <a href = '#agegrouping'> GROUPING OF PATIENTS BASED ON AGE </a> <br/>
-        <a href = '#topsellingmedicinesyearly'> TOP SELLING MEDICINES (YEARLY) </a> <br/>
-        <a href = '#topsellingmedicinesmonthly'> TOP SELLING MEDICINES (MONTHLY) </a> <br/> */}
         <p> </p> <p> </p>
         <div id = "admissionsmonthly"></div>
         <AdmissionsCountMonthly />
@@ -152,67 +146,6 @@ import TopSellingTestsMonth from "./components/Dashboard/TopSellingTestsMonth";
 
     return (
       <Router>
-
-          {/* <nav class="navbar navbar-expand navbar-dark bg-dark">
-          <div class="container">
-          <a href="#" class="navbar-brand"></a>
-          <ul class="navbar-nav">
-          <li class="nav-item">
-          <Link to="/home" style={{color: 'white', fontSize: '24px', fontWeight: 'bold'}}> &nbsp;&nbsp;Home&nbsp;&nbsp; </Link>
-          </li>
-          <li class="nav-item">
-          <Link to="/doctors" style={{color: 'white', fontSize: '24px', fontWeight: 'bold'}}> &nbsp;&nbsp;Doctors&nbsp;&nbsp; </Link>
-          </li>
-          <li class="nav-item">
-          <Link to="/medicines" style={{color: 'white', fontSize: '24px', fontWeight: 'bold'}}> &nbsp;&nbsp;Medicines&nbsp;&nbsp; </Link>
-          </li>
-          <li class="nav-item">
-          <Link to="/tests" style={{color: 'white', fontSize: '24px', fontWeight: 'bold'}}> &nbsp;&nbsp;Tests&nbsp;&nbsp; </Link>
-          </li>
-          <li class="nav-item">
-          <Link to="/rooms" style={{color: 'white', fontSize: '24px', fontWeight: 'bold'}}> &nbsp;&nbsp;Rooms&nbsp;&nbsp; </Link>
-          </li>
-          <li class="nav-item">
-          <Link to="/beds" style={{color: 'white', fontSize: '24px', fontWeight: 'bold'}}> &nbsp;&nbsp;Beds&nbsp;&nbsp; </Link>
-          </li>
-          </ul>
-          <div class="navbar-text"> </div>
-          </div>
-          </nav>
-
-
-        <div>
-           
-       <nav class="navbar navbar-inverse">
-          <div class="container-fluid">
-          <div class="navbar-header">
-          <button type="button" class="navbar-toggle btn-lg" data-toggle="collapse" data-target="#myNavbar">
-          HISTORY
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          </button>
-          </div>
-          <div class="collapse navbar-collapse" id="myNavbar">
-          <ul class = "flex-row">
-               <li>
-                 <Link to="/patients">Admission History</Link>
-               </li>
-               <li>
-                 <Link to="/register">Register a new patient</Link>
-               </li>
-               <li>
-                 <Link to="/teststaken">History of Tests Taken</Link>
-               </li>
-               <li>
-                 <Link to="/medicinestaken">History of Medicines Taken</Link>
-               </li>
-             </ul>
-          </div>
-        </div>
-      </nav>
-   */}
-          {/* <div> */}
           <div style = {{backgroundImage: `url('/hospitalpic3.jpg')`}} >
           {isLoggedIn ? <NavigationBar /> : <p></p>}
           {!isLoggedIn ? renderp() : <p></p>}
@@ -262,6 +195,8 @@ import TopSellingTestsMonth from "./components/Dashboard/TopSellingTestsMonth";
 
   const NavigationBar = () => {
     const location = useLocation();
+    const email = localStorage.getItem('email')
+
     if(location.pathname === '/login')
     {
       return null;
@@ -306,9 +241,8 @@ import TopSellingTestsMonth from "./components/Dashboard/TopSellingTestsMonth";
       </nav>
 
 
-    {/*<div>*/}
        
-   <nav class="navbar navbar-inverse">
+   {email === 'admin@gmail.com' && <nav class="navbar navbar-inverse">
       <div class="container-fluid">
       <div class="navbar-header">
       <button type="button" class="navbar-toggle btn-lg" data-toggle="collapse" data-target="#myNavbar">
@@ -342,12 +276,12 @@ import TopSellingTestsMonth from "./components/Dashboard/TopSellingTestsMonth";
              <Link to="/medicinestaken">History of Medicines Taken</Link>
            </li>
            <li>
-             <Link to="/bedstaken">History of Beds Taken</Link>
+             <Link to="/bedstaken">List of Currenly Hospitalised Patients</Link>
            </li>
          </ul>
       </div>
     </div>
-  </nav>
+  </nav>}
   </div>
     );
   }
@@ -395,52 +329,9 @@ import TopSellingTestsMonth from "./components/Dashboard/TopSellingTestsMonth";
      );
    }
    
-   export default App;
-  
-
-
-
-   /*
-   import React, { Fragment } from 'react';
-import './App.css';
-
-// We suggest that you begin by typing:
-
-//   cd client
-//   npm start
-
-// Happy hacking!
-
-
-
-// components
-import InputTodo from './components/inputTodo';
-import ListTodos from './components/ListTodos';
-import ListofPatients from './components/ListofPatients';
-import InputPatient from './components/InputPatient';
-import ListofDoctors from './components/ListofDoctors';
-function App() {
-  return ( // returning jsx, not html. Also function name starts with a capital letter. This is
-  // called component which is a breakdown of individual parts of an application.
-  <Fragment>
-  <div className="background-image">
-  <div className="overlay">
-  <div className="container">
-    
-
-    <ListofPatients />
-    <InputPatient />
-  </div>
-  </div>
-  </div>
-  </Fragment>
-  
-  );
-}
-
 export default App;
+  
 
-   */
 
 
 
@@ -449,6 +340,8 @@ const Login6 = ({ setLoginTrue }) => {
     email: "",
     password: ""
   });
+
+  const [isAdmin, setIsAdmin] = useState(false)
 
   const { email, password } = inputs;
 
@@ -464,6 +357,7 @@ const Login6 = ({ setLoginTrue }) => {
       const parseRes = await response.json();
       
       let x = false
+
       parseRes.forEach(element => {
         console.log(element.USER_EMAIL)
         console.log(email)
@@ -473,27 +367,38 @@ const Login6 = ({ setLoginTrue }) => {
 
         if(element.USER_EMAIL === email && element.USER_PASSWORD === password)
         {
-          //setAuth(true);
-          //setLoginTrue();
-          x = true
-          localStorage.setItem('isLoggedIn', true);
-          console.log("yep");
-          window.location = "/home"
-          //alert("Invalid email or password");
-          //return;
+          if(isAdmin && email === 'admin@gmail.com') x = true;
+          else if(!isAdmin && email !== 'admin@gmail.com') x = true;
+
+          if (x) {
+            localStorage.setItem('isLoggedIn', true);
+            console.log("yep");
+            window.location = "/home"
+            localStorage.setItem('username_currently_logged_in', element.USER_NAME);
+            localStorage.setItem('userid_currently_logged_in', element.USER_ID);
+            localStorage.setItem('useremail_currently_logged_in', element.USER_EMAIL);
+            localStorage.setItem('email', element.USER_EMAIL);
+          }
+          
+          // to get the locally stored username: 
+          /*
+            // Get the value from localStorage
+          const storedUsername = localStorage.getItem('username');
+          console.log(storedUsername); // Output: 'JohnDoe'
+
+          */
         }
         
-        // else
-        // {
-        //   alert("Incorrect username and password")
-        //   console.log("nope, doesnt match")
-        // }
+        else
+        {
+          console.log('no! incorrect in this looP!')
+        }
         //else {window.location = "/doctors";}
       });
 
-      if(!x) {
+      if (!x) {
         alert("Incorrect username and password")
-          console.log("nope, doesnt match")
+        console.log("nope, doesnt match")
       }
         
     } catch (err) {
@@ -501,9 +406,15 @@ const Login6 = ({ setLoginTrue }) => {
     }
   };
 
+  const handleChange = (event) => {
+    const selectedValue = event.target.value;
+    setIsAdmin(selectedValue === 'option1');
+    if(selectedValue === 'option2') setIsAdmin(false)
+  };
+
   return (
     <Fragment>
-      <div style = {{backgroundColor: 'white'}} >
+      <div style = {{backgroundColor: "white"}}>
       <h1 className="mt-5 text-center">Login</h1>
       <form onSubmit={onSubmitForm}>
         <center>
@@ -533,13 +444,23 @@ const Login6 = ({ setLoginTrue }) => {
         />
         </div>
         <p> </p> <p> </p>
+        
+        <div>
+          Login As: &nbsp;
+          <select onChange={handleChange} defaultValue="">
+            <option value="" disabled>Select role</option>
+            <option value="option1">Admin</option>
+            <option value="option2">User</option>
+          </select>
+        </div>
+        <p> </p> <p></p>
         <button class="btn btn-success">Submit</button>
         </center>
       </form>
       <center>
       <Link to="/registeraccount">Don't have an account? Register</Link>
       </center>
-    </div>  
+      </div>
     </Fragment>
   );
 };

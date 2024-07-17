@@ -8,6 +8,14 @@ const ListofBeds = () => {
 
     //const [todos, setTodos] = useState([])
     const [doctors, setDoctors] = useState([]);
+    const [email, setEmail] = useState('')
+
+    const [numberOfRows, setnumberOfRows] = useState(50);
+    const rowsPerLoad = 100;
+
+    const loadMoreRows = () => {
+        setnumberOfRows(numberOfRows + rowsPerLoad);
+    };
 
     // DELETE FUNCTION
     const deleteDoctor = async (BED_ID) => {
@@ -29,6 +37,7 @@ const ListofBeds = () => {
     }
 
     const getBeds = async() => {
+        setEmail(localStorage.getItem('email'))
         try {
             const response = await fetch("http://localhost:5000/beds"); // by default, fetch makes a get request
             // we will get json data back
@@ -50,6 +59,14 @@ const ListofBeds = () => {
     return (
     <Fragment>
     <div className="text-center">
+    <button className="btn btn-dark">
+        <div style={{fontSize: '28px'}}>
+        <b> View the currently occupied beds <br />
+        and hospitalised patients- </b>
+        <a href="http://localhost:3000/bedstaken">here</a>
+        </div>
+    </button>
+
     <center><h1 class = "mt-5"> LIST OF UNOCCUPIED/AVAILABLE BEDS </h1></center>
     
     <table class="table table-bordered mt-5 table-dark table-striped table-sm">
@@ -67,7 +84,7 @@ const ListofBeds = () => {
 
     <tbody>
 
-    {doctors.map(todo => (
+    {doctors.slice(0, numberOfRows).map(todo => (
         <tr>
             <td>
                  {todo.BID}
@@ -78,23 +95,30 @@ const ListofBeds = () => {
             <td> {todo.RID}  </td>
             <td> {todo.RNAME}  </td>
             <td> {todo.RTYPE}  </td>
-            <td style={{width: '8%'}}> <button className="btn btn-warning"> Edit </button></td>
+            {email === 'admin@gmail.com' && <div> <td style={{width: '8%'}}> <button className="btn btn-warning"> Edit </button></td>
             <td style={{width: '8%'}}> 
                 <button className="btn btn-danger" onClick={() => deleteDoctor(todo.BID)}>
                  Delete </button> 
-            </td>
+            </td> </div>}
         </tr>
     ))}
 
     </tbody>
     </table>
+
+    <p></p>
+
+    <center>
+    {numberOfRows < doctors.length && (
+                        <div style={{ textAlign: 'center' }}>
+                            <button className="btn btn-warning" onClick={loadMoreRows}>
+                                Load More Rows
+                            </button>
+                        </div>
+                        )}
+    </center>
     <p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
-    <button>
-    View the currently occupied beds <br />
-    and hospitalised patients-
-    <a href="http://localhost:3000/bedstaken">here</a>
     
-    </button>
 
     <p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
     </div>

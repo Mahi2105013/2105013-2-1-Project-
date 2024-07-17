@@ -11,6 +11,13 @@ const ListofPatients = () => {
     const [patients, setPatients] = useState([])
     const [latestBeta, setlatestBeta] = useState([])
 
+    const [numberOfRows, setnumberOfRows] = useState(50);
+    const rowsPerLoad = 100;
+
+    const loadMoreRows = () => {
+        setnumberOfRows(numberOfRows + rowsPerLoad);
+    };
+
     // DELETE FUNCTION
     const deletePatient = async (PATIENT_ID) => {
         try {
@@ -121,7 +128,7 @@ const ListofPatients = () => {
     </thead>
 
     <tbody>
-    {patients.map(p => (
+    {patients.slice(0, numberOfRows).map(p => (
         <tr>
             <td>{p.ADMISSION_ID}</td>
             <td>{p.DATEADM}</td>
@@ -142,8 +149,19 @@ const ListofPatients = () => {
         </tr>
     ))}
 
+
     </tbody>
     </table>
+
+    <center>
+    {numberOfRows < patients.length && (
+                        <div style={{ textAlign: 'center' }}>
+                            <button className="btn btn-warning" onClick={loadMoreRows}>
+                                Load More Rows
+                            </button>
+                        </div>
+                        )}
+    </center>
 
     <p> </p>
     <p> </p>

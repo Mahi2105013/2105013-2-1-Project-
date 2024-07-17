@@ -44,7 +44,7 @@ const DischargeForm = () => {
                         onChange={(e) => setbedtakenid(e.target.value)}
                     />
                 </label> <br />
-                <button type="submit">Submit</button>
+                <div style={{fontSize: '24px'}}> <button type="submit">Submit</button> </div>
             </form>
         </div>
     );

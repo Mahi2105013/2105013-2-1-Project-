@@ -14,6 +14,7 @@ const ListofBedsTakenList = () => {
     //const [todos, setTodos] = useState([])
     const [medicines, setMedicines] = useState([]);
     const [name, setName] = useState("");
+    const [email, setEmail] = useState('')
 
     const Searcher = async e => {
         if (e) {
@@ -36,6 +37,7 @@ const ListofBedsTakenList = () => {
 
     const getMedicines = async() => {
         try {
+            setEmail(localStorage.getItem('email'))
             const response = await fetch("http://localhost:5000/bedstakenocc"); // by default, fetch makes a get request
             // we will get json data back
             const jsonData = await response.json();
@@ -57,6 +59,20 @@ const ListofBedsTakenList = () => {
 
     return (
     <Fragment>
+    
+    {email !== 'admin@gmail.com' && <h1> <center> Sorry, you are not entitled to access this information!</center></h1>}
+    {email !== 'admin@gmail.com' && <div>
+        <p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p>
+    </div>}
+
+
+    {email === 'admin@gmail.com' && <div>
+    <Link to = "http://localhost:3000/bedstaken2">
+       <center> <button class="btn-success">
+        Click Here to 
+       view Full History <br /> of Beds Taken </button> </center>
+    </Link>
+
     <center><h1 class = "mt-5" id="list"> SEARCH FOR A HOSPITALISED PATIENT: </h1></center>
     <form onSubmit={Searcher} className="text-center" style={{backgroundColor: 'rgba(40,167,69,0.1)'}}>
         <center>
@@ -127,12 +143,11 @@ const ListofBedsTakenList = () => {
     <p></p>
     <p></p>
 
-    <Link to = "http://localhost:3000/bedstaken2">
-       <center> <button class="btn-success"> Next Page: <br />
-       View Full History of Beds Taken </button> </center>
-    </Link>
+    
     <p></p>
     <p></p>
+
+    </div>}
     </Fragment>
     )
 }

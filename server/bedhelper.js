@@ -180,6 +180,15 @@ app.get("/bedstakenocc", async(req, res) => {
 // beds occupied on given date
 app.get("/bedstakenoccday", async(req, res) => {
     try {
+    await db_query(
+        `DECLARE
+        BEGIN
+            CALCULATE_NIGHTS_STAYED;
+        END
+        `, 
+        []
+    )
+
     const {GivenDate} = req.query;
     const query = 
     `SELECT BT.BED_TAKEN_ID, 
@@ -194,6 +203,7 @@ app.get("/bedstakenoccday", async(req, res) => {
     BT.COST_PER_NIGHT,
     --BT.NUMBER_OF_NIGHTS_STAYED
     ROUND(TO_DATE(:GivenDate, 'YYYY-MM-DD') - BT.START_DATE,0) as NUMBER_OF_NIGHTS_STAYED
+    --FLOOR(nvl(END_DATE, SYSDATE) - START_DATE) as NUMBER_OF_NIGHTS_STAYED
     FROM BED_TAKEN BT
     LEFT OUTER JOIN BED B
     ON BT.BED_ID = B.BED_ID
@@ -221,6 +231,15 @@ app.get("/bedstakenoccday", async(req, res) => {
 // all beds currently occupied
 app.get("/bedstakenoccsearch", async(req, res) => {
     try {
+    await db_query(
+            `DECLARE
+            BEGIN
+                CALCULATE_NIGHTS_STAYED;
+            END;
+            `, 
+            []
+        )
+
     const {name} = req.query;
     const query = 
     `SELECT BT.BED_TAKEN_ID, 
@@ -233,7 +252,8 @@ app.get("/bedstakenoccsearch", async(req, res) => {
     R.ROOM_TYPE,
     TO_CHAR(BT.START_DATE, 'DD-MON-YYYY') S, 
     BT.COST_PER_NIGHT,
-    BT.NUMBER_OF_NIGHTS_STAYED
+    --BT.NUMBER_OF_NIGHTS_STAYED
+    FLOOR(nvl(END_DATE, SYSDATE) - START_DATE) as NUMBER_OF_NIGHTS_STAYED
     FROM BED_TAKEN BT
     LEFT OUTER JOIN BED B
     ON BT.BED_ID = B.BED_ID

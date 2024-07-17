@@ -2,36 +2,11 @@ import React, {Fragment, useEffect, useState} from "react";
 import { Link } from "react-router-dom";
 import MedicineWiseAnalysis from "./Dashboard/MedicineWiseAnalysis";
 import InputMedicineTaken from "./InputMedicineTaken";
-// use effect -> make a fetch request
-//import EditTodo from "./EditTodo";
-
-
 
 const ListofMedicinesTaken = () => {
-
-    //const [todos, setTodos] = useState([])
     const [medicines, setMedicines] = useState([]);
     const [medicinestakenbill, setMedicinestakenbill] = useState([]);
     const [medicinestakencount, setMedicinestakencount] = useState([]);
-
-    // DELETE FUNCTION
-    /*const deleteMedicine = async (MEDICINE_ID) => {
-        try {
-            const confirmed = window.confirm("Are you sure you want to delete?");
-            if(!confirmed) return;
-            const response = await fetch(`http://localhost:5000/medicines/${MEDICINE_ID}`, {
-                method: "DELETE"
-            });
-    
-            if (response.ok) {
-                setMedicines(prevTodos => prevTodos.filter(todo => todo.MEDICINE_ID !== MEDICINE_ID));
-            } else {
-                console.log(`Error deleting todo with ID ${MEDICINE_ID}`);
-            }
-        } catch (error) {
-            console.log(error);
-        }
-    }*/
 
     const getMedicines = async() => {
         try {

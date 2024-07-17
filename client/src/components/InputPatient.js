@@ -172,14 +172,17 @@ const InputPatient = () => {
   
                 onChange={e => SETBED_ID(e.target.value)} // change the description
                 />
-                <a href="http://localhost:3000/beds">
+                <p></p>
+                <div style={{fontSize: '20px', backgroundColor: 'white'}}> <a href="http://localhost:3000/beds">
                     [Check list of available beds here]
-                </a>
+                </a> </div>
 
                 <p> </p>
                 <p> </p>
                 
-                <button className="btn btn-success">Register</button>
+                <button className="btn btn-success">
+                    <div style={{fontSize: '24px'}}> Register</div>
+                </button> 
                 <p> </p>
                 <p> </p>
                 </div>

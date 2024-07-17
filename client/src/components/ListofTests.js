@@ -14,6 +14,7 @@ const ListofTests = () => {
     const [name, setName] = useState(""); // name -> TEST NAME
     const [name2, setName2] = useState(""); // DESCription
     const [pdf, setpdf] = useState()
+    const [email, setEmail] = useState("")
     
     const Searcher = async e => {
         e.preventDefault();
@@ -54,6 +55,7 @@ const ListofTests = () => {
 
     const getMedicines = async() => {
         try {
+            setEmail(localStorage.getItem('email'))
             const response = await fetch("http://localhost:5000/tests"); // by default, fetch makes a get request
             //const response = await fetch("http://localhost:5000/teststaken")
             // we will get json data back
@@ -77,7 +79,7 @@ const ListofTests = () => {
         <center>
     <a href = '#list2'> <button className="btn-primary"> View Tests</button> </a> <br/>
     <p></p>
-    <a href = '#form'> <button className="btn-primary">Add a Test </button> </a>
+    {email === 'admin@gmail.com' && <a href = '#form'> <button className="btn-primary">Add a Test </button> </a>}
     </center>
 
     <center><h1 class = "mt-5" id="list"> SEARCH FOR A TEST: </h1></center>
@@ -137,41 +139,19 @@ const ListofTests = () => {
             <td> {todo.TYPE}  </td>
             <td class = "col-5"> {todo.DESCRIPTION}  </td>
             <td> {todo.COST}  </td>
-            <td> <EditTest todo={todo}/> </td>
-            <td> 
+            {email === 'admin@gmail.com' && <td> <EditTest todo={todo}/> </td>}
+            {email === 'admin@gmail.com' && <td> 
                 <button className="btn btn-danger" onClick={() => deleteMedicine(todo.TEST_ID)}>
                  Delete </button> 
-            </td>
+            </td>}
         </tr>
     ))}
 
-    {/* {medicines.map(todo => (
-        <tr key = {todo.TEST_TAKEN_ID}>
-            <td>
-                 {todo.TEST_TAKEN_ID}
-            </td> 
-            <td> {todo.COST}  </td>
-            <td class = "col-5"> 
-                {todo.REPORT && (
-                    //<button onclick="Searcher()">Open PDF</button>
-                    //<a href={todo.REPORT} target="_blank">{todo.REPORT}</a>
-                    <a href="http://localhost:5000/pdf">Download PDF! LoL!</a>
-
-                )}
-            </td>
-            <td> {todo.ADMISSION_ID}  </td>
-            <td> <EditTest todo={todo}/> </td>
-            <td> 
-                <button className="btn btn-danger" onClick={() => deleteMedicine(todo.TEST_ID)}>
-                 Delete </button> 
-            </td>
-        </tr>
-    ))} */}
-
     </tbody>
     </table>
-    <p id="form"> </p>
+    {email === 'admin@gmail.com' && <p id="form"> 
     <InputTest />
+    </p>}
     </Fragment>
     )
 }
