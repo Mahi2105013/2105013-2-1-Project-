@@ -1,7 +1,11 @@
 import React, { Fragment, useState, useEffect } from "react";
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { 
+  faHospital, faHeartbeat, faCalendarWeek, 
+  faCalendarAlt, faUsers, faDisease, 
+  faPills, faCapsules, faFlask, faVial 
+} from '@fortawesome/free-solid-svg-icons';
 import './App.css';
-//import InputTodo from "./components/inputTodo";
-//import ListTodos from "./components/ListTodos";
 import { BrowserRouter as Router, Routes, Route, Link, Navigate, useLocation } from "react-router-dom";
 import ListofPatients from './components/ListofPatients';
 import InputPatient from './components/InputPatient';
@@ -9,7 +13,6 @@ import ListofDoctors from './components/ListofDoctors';
 import ListofMedicines from "./components/ListofMedicines";
 import ListofMedicinesTaken from "./components/ListofMedicinesTaken";
 import InputMedicine from "./components/InputMedicine";
-//import Dashboard from "./components/AdmDummy";
 import ListofMedicinesTaken2 from "./components/ListofMedicinesTaken2";
 import ListofMedicinesTaken3 from "./components/ListofMedicinesTaken3";
 import ListofMedicinesTaken4 from "./components/ListofMedicinesTaken4";
@@ -17,9 +20,6 @@ import ListofRooms from "./components/ListofRooms";
 import ListofBeds from "./components/ListofBeds";
 import Login from "./components/Login";
 import Register from "./components/Register";
-//import Dashboard from "./components/Dashboard";
-//import Dashboard from "./components/Dashboard"
-//import DashboardforHomePage from "./components/DashboardforHomePage";
 import TopSellingMedicines from "./components/Dashboard/TopSellingMedicines";
 import ListofTests from "./components/ListofTests";
 import ListofPatients2 from "./components/ListofPatients2";
@@ -37,6 +37,11 @@ import ListofBedsTakenList from "./components/ListofBedsTaken";
 import PatientWiseAnalysis from "./components/Dashboard/PatientWiseAnalysis";
 import TopSellingTestsYear from "./components/Dashboard/TopSellingTests";
 import TopSellingTestsMonth from "./components/Dashboard/TopSellingTestsMonth";
+
+// Initialize Font Awesome library
+library.add(faHospital, faHeartbeat, faCalendarWeek, faCalendarAlt, 
+            faUsers, faDisease, faPills, faCapsules, faFlask, faVial);
+
 
    
    // Define page components directly within App.js
@@ -92,30 +97,187 @@ import TopSellingTestsMonth from "./components/Dashboard/TopSellingTestsMonth";
     };
     
 
-    return (   
-      <div className="text-center" style = {{backgroundImage: `url('/hospitalpic3.jpg')`}}>
-        <h1 className="text-center">Welcome to Hospital Management System</h1>
-        <p className="text-left">
-          At our core, we prioritize the health and well-being of our patients, staff, and community. With cutting-edge technology and a compassionate approach, we strive to provide seamless healthcare management solutions. From patient records to staff coordination, inventory management to streamlined operations, our system empowers healthcare professionals to deliver optimal care. Together, we embark on a journey of innovation and collaboration, ensuring that every aspect of healthcare administration is handled with precision and care. Trust in us as your reliable partner in healthcare management, where every action is driven by our commitment to excellence.
-        </p>
-        <p> </p> <p> </p>
-        <div id = "admissionsmonthly"></div>
-        <AdmissionsCountMonthly />
-        <div id = "admissionsyearly"></div>
-        <AdmissionCountYearly />
-        <DiseaseGrouping />
-        <div id = "agegrouping"></div>
-        <AdmissionAgeGrouping />
-        <div id = "topsellingmedicinesyearly"></div>
-        <TopSellingMedicines />
-        <div id = "topsellingmedicinesmonthly"></div>
-        <TopSellingMedicinesMonth />
-        
-        <TopSellingTestsYear />
-        <TopSellingTestsMonth />
-        
-      </div>     
-    );
+    return (
+  <div className="welcome-page" style={{ 
+    backgroundImage: `linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), url('/hospitalpic3.jpg')`,
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    backgroundAttachment: 'fixed',
+    minHeight: '100vh',
+    padding: '2rem 0'
+  }}>
+    <div className="container">
+      {/* Hero Section */}
+      <div className="hero-section text-center mb-5 p-4 rounded-3" style={{
+        backgroundColor: 'rgba(13, 110, 253, 0.1)',
+        borderLeft: '5px solid #0d6efd'
+      }}>
+        <h1 className="display-4 fw-bold text-primary mb-3">
+          <i className="fas fa-hospital me-2"></i>
+          Welcome to Hospital Management System
+        </h1>
+        <div className="row justify-content-center">
+          <div className="col-lg-8">
+            <p className="lead text-muted text-center" style={{
+              lineHeight: '1.8',
+              fontSize: '1.1rem'
+            }}>
+              At our core, we prioritize the health and well-being of our patients, staff, and community. 
+              With cutting-edge technology and a compassionate approach, we strive to provide seamless 
+              healthcare management solutions.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* Mission Statement */}
+      <div className="mission-card card shadow-sm mb-5 border-0">
+        <div className="card-body p-4">
+          <div className="row align-items-center">
+            <div className="col-md-2 text-center">
+              <i className="fas fa-heartbeat text-danger" style={{ fontSize: '3rem' }}></i>
+            </div>
+            <div className="col-md-10">
+              <p className="mb-0" style={{
+                fontSize: '1.05rem',
+                lineHeight: '1.8'
+              }}>
+                From patient records to staff coordination, inventory management to streamlined operations, 
+                our system empowers healthcare professionals to deliver optimal care. Together, we embark 
+                on a journey of innovation and collaboration, ensuring that every aspect of healthcare 
+                administration is handled with precision and care. Trust in us as your reliable partner 
+                in healthcare management, where every action is driven by our commitment to excellence.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Dashboard Components */}
+      <div className="dashboard-components">
+        {/* Analytics Row 1 */}
+        <div className="row mb-4 g-4">
+          <div className="col-lg-6" id="admissionsmonthly">
+            <div className="card shadow-sm h-100">
+              <div className="card-header bg-primary text-white">
+                <h3 className="h5 mb-0">
+                  <i className="fas fa-calendar-week me-2"></i>
+                  Monthly Admissions
+                </h3>
+              </div>
+              <div className="card-body">
+                <AdmissionsCountMonthly />
+              </div>
+            </div>
+          </div>
+          <div className="col-lg-6" id="admissionsyearly">
+            <div className="card shadow-sm h-100">
+              <div className="card-header bg-success text-white">
+                <h3 className="h5 mb-0">
+                  <i className="fas fa-calendar-alt me-2"></i>
+                  Yearly Admissions
+                </h3>
+              </div>
+              <div className="card-body">
+                <AdmissionCountYearly />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Analytics Row 2 */}
+        <div className="row mb-4 g-4">
+          <div className="col-lg-6" id="agegrouping">
+            <div className="card shadow-sm h-100">
+              <div className="card-header bg-info text-white">
+                <h3 className="h5 mb-0">
+                  <i className="fas fa-users me-2"></i>
+                  Age Group Analysis
+                </h3>
+              </div>
+              <div className="card-body">
+                <AdmissionAgeGrouping />
+              </div>
+            </div>
+          </div>
+          <div className="col-lg-6">
+            <div className="card shadow-sm h-100">
+              <div className="card-header bg-warning text-dark">
+                <h3 className="h5 mb-0">
+                  <i className="fas fa-disease me-2"></i>
+                  Disease Grouping
+                </h3>
+              </div>
+              <div className="card-body">
+                <DiseaseGrouping />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Analytics Row 3 */}
+        <div className="row mb-4 g-4">
+          <div className="col-lg-6" id="topsellingmedicinesyearly">
+            <div className="card shadow-sm h-100">
+              <div className="card-header bg-danger text-white">
+                <h3 className="h5 mb-0">
+                  <i className="fas fa-pills me-2"></i>
+                  Top Selling Medicines (Yearly)
+                </h3>
+              </div>
+              <div className="card-body">
+                <TopSellingMedicines />
+              </div>
+            </div>
+          </div>
+          <div className="col-lg-6" id="topsellingmedicinesmonthly">
+            <div className="card shadow-sm h-100">
+              <div className="card-header bg-purple text-white" style={{ backgroundColor: '#6f42c1' }}>
+                <h3 className="h5 mb-0">
+                  <i className="fas fa-capsules me-2"></i>
+                  Top Selling Medicines (Monthly)
+                </h3>
+              </div>
+              <div className="card-body">
+                <TopSellingMedicinesMonth />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Analytics Row 4 */}
+        <div className="row g-4">
+          <div className="col-lg-6">
+            <div className="card shadow-sm h-100">
+              <div className="card-header bg-teal text-white" style={{ backgroundColor: '#20c997' }}>
+                <h3 className="h5 mb-0">
+                  <i className="fas fa-flask me-2"></i>
+                  Top Selling Tests (Yearly)
+                </h3>
+              </div>
+              <div className="card-body">
+                <TopSellingTestsYear />
+              </div>
+            </div>
+          </div>
+          <div className="col-lg-6">
+            <div className="card shadow-sm h-100">
+              <div className="card-header bg-indigo text-white" style={{ backgroundColor: '#6610f2' }}>
+                <h3 className="h5 mb-0">
+                  <i className="fas fa-vial me-2"></i>
+                  Top Selling Tests (Monthly)
+                </h3>
+              </div>
+              <div className="card-body">
+                <TopSellingTestsMonth />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+);
   };
    const AboutPage = () => <div>This is the About Page.</div>;
    const ContactPage = () => <div>Contact us here!</div>;

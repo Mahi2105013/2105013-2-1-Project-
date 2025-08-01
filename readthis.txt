@@ -1,0 +1,9 @@
+Demonstration Link: https://youtu.be/AzX-JDOA0eI?si=d32gP-frweTu6Kak
+
+Login with the following credentials:
+
+admin@gmail.com
+123
+
+cd server && node index
+cd client && npm start

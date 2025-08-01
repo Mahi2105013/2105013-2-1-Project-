@@ -61,3 +61,73 @@ label {
     transform: rotate(360deg);
   }
 }
+
+
+
+/* Add to your CSS file */
+.avatar {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1) !important;
+}
+
+.card-header {
+  border-bottom: none;
+}
+
+.list-group-item {
+  border-left: 0;
+  border-right: 0;
+  padding: 0.75rem 0;
+}
+
+.list-group-item:first-child {
+  border-top: 0;
+}
+
+.bg-light-primary {
+  background-color: rgba(13,110,253,0.1);
+}
+
+.card {
+    border-radius: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+}
+
+.table-responsive {
+    overflow-x: auto;
+}
+
+.table-hover tbody tr:hover {
+    background-color: rgba(0, 0, 0, 0.02);
+}
+
+.thead-light {
+    background-color: #f8f9fa;
+}
+
+.spinner-border {
+    width: 3rem;
+    height: 3rem;
+}
+
+.btn-group .btn {
+    flex: 1;
+}

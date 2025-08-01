@@ -55,49 +55,71 @@ const ListofDoctors = () => {
             { " " }
     <center><h1 class = "mt-5"> LIST OF DOCTORS</h1></center>
     
-    <table class="table table-bordered mt-5 table-dark table-striped table-sm">
-
-    <thead>
-      <tr>
-        <th>DOCTOR ID</th>
-        <th>FIRST NAME</th>
-        <th> LAST NAME </th>
-        <th> DEPARTMENT NAME</th>
-        <th> SPECIALITY</th>
-        <th>CONTACT NUMBER</th>
-      </tr>
-    </thead>
-
-    <tbody>
-      {/*<tr>
-        <td>John</td>
-        <td>Doe</td>
-        <td>john@example.com</td>
-    </tr>*/}
-
-    {doctors.map(todo => (
-        <tr key = {todo.DOCTOR_ID}>
-            <td>
-                 {todo.DOCTOR_ID}
-            </td> 
-            {/*table attribute like DESCRIPTIONN must be in upper case*/}
-            <td> {todo.FIRST_NAME}  </td>
-            <td> {todo.LAST_NAME}  </td>
-            <td> {todo.DEPARTMENT_NAME}  </td>
-            <td> {todo.SPECIALITY}  </td>
-            <td> {todo.CONTACT_NO}  </td>
-            {email === 'admin@gmail.com' && <div> <td> 
-                <button className="btn btn-warning"> Edit </button>
-            </td>
-            <td> 
-                <button className="btn btn-danger" onClick={() => deleteDoctor(todo.DOCTOR_ID)}>
-                 Delete </button> 
-            </td> </div>}
-        </tr>
+    <div className="container my-5">
+  <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+    {doctors.map(doctor => (
+      <div className="col" key={doctor.DOCTOR_ID}>
+        <div className="card h-100 shadow-sm border-0">
+          <div className="card-header bg-primary text-white">
+            <h5 className="card-title mb-0">
+              Dr. {doctor.FIRST_NAME} {doctor.LAST_NAME}
+            </h5>
+          </div>
+          <div className="card-body">
+            <div className="d-flex mb-3">
+              <div className="me-3">
+                <div className="avatar avatar-lg bg-light-primary rounded-circle d-flex align-items-center justify-content-center">
+                  <i className="fas fa-user-md fa-lg text-primary"></i>
+                </div>
+              </div>
+              <div>
+                <h6 className="text-muted mb-1">Specialty</h6>
+                <p className="h5 text-dark">{doctor.SPECIALITY}</p>
+                
+                <h6 className="text-muted mb-1 mt-2">Department</h6>
+                <p className="h6 text-dark">{doctor.DEPARTMENT_NAME}</p>
+              </div>
+            </div>
+            
+            <ul className="list-group list-group-flush mb-3">
+              <li className="list-group-item d-flex justify-content-between align-items-center">
+                <span>
+                  <i className="fas fa-id-card me-2 text-muted"></i>
+                  Doctor ID
+                </span>
+                <span className="badge bg-light text-dark">{doctor.DOCTOR_ID}</span>
+              </li>
+              <li className="list-group-item d-flex justify-content-between align-items-center">
+                <span>
+                  <i className="fas fa-phone me-2 text-muted"></i>
+                  Contact
+                </span>
+                <span className="text-primary">{doctor.CONTACT_NO}</span>
+              </li>
+            </ul>
+          </div>
+          
+          {email === 'admin@gmail.com' && (
+            <div className="card-footer bg-transparent d-flex justify-content-between">
+              <button 
+                className="btn btn-sm btn-outline-warning"
+                onClick={() => {/* Edit function here */}}
+              >
+                <i className="fas fa-edit me-1"></i> Edit
+              </button>
+              <button 
+                className="btn btn-sm btn-outline-danger" 
+                onClick={() => deleteDoctor(doctor.DOCTOR_ID)}
+              >
+                <i className="fas fa-trash me-1"></i> Delete
+              </button>
+            </div>
+          )}
+        </div>
+      </div>
     ))}
-
-    </tbody>
-    </table>
+  </div>
+</div>
     </Fragment>
     )
 }
